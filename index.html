@@ -14,11 +14,12 @@
 
     <p>Entre na sua conta ou crie uma nova.</p>
 
-    <form class="form-login">
-      <input type="text" placeholder="Usuário" required>
-      <input type="password" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
-    </form>
+   <form class="form-login" onsubmit="event.preventDefault(); window.location.href='inicio.html';">
+  <input type="text" placeholder="Usuário" required>
+  <input type="password" placeholder="Senha" required>
+  <button type="submit">Entrar</button>
+</form>
+
 
     <div class="cadastro">
       <p>Não tem conta?</p>
