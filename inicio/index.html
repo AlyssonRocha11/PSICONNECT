@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psiconnect</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            color: #ffcc00;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .menu button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #ffcc00;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .menu button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+        
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .banner-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            height: 250px;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            justify-content: left;
+        }
+        
+        .banner.active {
+            opacity: 1;
+        }
+        
+        .banner-text {
+            color: #ffffff;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            padding: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Psiconnect</h1>
+        <div class="menu">
+            <button onclick="window.location.href='index.html'">Início</button>
+            <button onclick="window.location.href='Sobre/index.html'">Sobre</button>
+            <button onclick="window.location.href='Servicos/index.html'">Serviços</button>
+            <button onclick="window.location.href='Contato/index.html'">Contato</button>
+        </div>
+    </header>
+
+    <main>
+        <h2>Bem-vindo ao Psiconnect!</h2>
+        <p>Seu bem-estar começa aqui. Clique abaixo para agendar sua consulta.</p>
+
+        <div class="banner-container">
+            <div class="banner active" style="background-image: url('https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=80');">
+                <div class="banner-text">Acolhimento e atenção para você</div>
+            </div>
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1507504031000-2329c6cf1a1b?auto=format&fit=crop&w=800&q=80');">
+                <div class="banner-text">Psicologia supervisionada com qualidade</div>
+            </div>
+            <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1515165562835-cadd06b60e8d?auto=format&fit=crop&w=800&q=80');">
+                <div class="banner-text">Cuidando do seu bem-estar emocional</div>
+            </div>
+        </div>
+
+        <button class="btn" onclick="window.location.href='Agendar/index.html'">Agendar Consulta</button>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const banners = document.querySelectorAll('.banner');
+            let current = 0;
+
+            function showBanner(index) {
+                banners.forEach((b, i) => {
+                    b.classList.toggle('active', i === index);
+                });
+                current = index;
+            }
+
+            function nextBanner() {
+                showBanner((current + 1) % banners.length);
+            }
+
+            setInterval(nextBanner, 4000);
+        });
+    </script>
+
+</body>
+
+</html>
