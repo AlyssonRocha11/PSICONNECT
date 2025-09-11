@@ -23,7 +23,7 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Nome Psiconnect como logo */
+
 .logo {
   font-size: 2.3rem;
   font-weight: bold;
@@ -94,4 +94,13 @@ select {
   border: none;
   font-size: 1rem;
   margin-bottom: 15px;
+}
+
+ textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 80px;
 }
