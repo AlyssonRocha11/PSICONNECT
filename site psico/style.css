@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: rgba(0,0,0,0.4);
+  padding: 40px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Nome Psiconnect como logo */
+.logo {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.slogan {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #ddd;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ffcc00;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffdb4d;
+  transform: scale(1.05);
+}
+
+.cadastro {
+  margin-top: 20px;
+}
+
+.cadastro a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cadastro a:hover {
+  text-decoration: underline;
+}
+
+select {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
