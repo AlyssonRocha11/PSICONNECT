@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    </div <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psiconnect</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            padding: 25px 0;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .menu button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .menu button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+        
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .carousel {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            height: 200px;
+            margin: 30px 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+        
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <header>
+        <h1>Psiconnect</h1>
+        <div class="menu">
+            <button onclick="window.location.href='index.html'">Início</button>
+            <button onclick="window.location.href='../Sobre/index.html'">Sobre</button>
+            <button onclick="window.location.href='../Servicos/index.html'">Serviços</button>
+            <button onclick="window.location.href='../Contato/index.html'">Contato</button>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="carousel" id="carousel">Seu bem-estar começa aqui</div>
+        <button class="btn" onclick="window.location.href='../Agendar/index.html'">Agendar Consulta</button>
+    </main>
+
+
+    <footer>
+        &copy; 2025 Psiconnect. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // Carrossel de frases motivacionais
+        const frases = [
+            "Seu bem-estar começa aqui",
+            "Conectando alunos e pacientes",
+            "Cuidado supervisionado por professores",
+            "Aprendizado prático e ético",
+            "Agende sua consulta facilmente"
+        ];
+        let indice = 0;
+        const carousel = document.getElementById('carousel');
+
+        setInterval(() => {
+            indice = (indice + 1) % frases.length;
+            carousel.textContent = frases[indice];
+        }, 4000);
+    </script>
+
+</body>
+
+</html>
