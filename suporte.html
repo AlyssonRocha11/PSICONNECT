@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psiconnect - Suporte</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #07f0d1, #077f8f);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      color: #ffffff;
+    }
+
+    .menu {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .menu button {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #f7f6f3;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .menu button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .suporte-container {
+      width: 90%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      margin-top: 40px;
+    }
+
+    .suporte-container h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .suporte-container p {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #f0f0f0;
+    }
+
+    .suporte-container textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+      resize: none;
+      height: 150px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.4);
+    }
+
+    .mensagem-sucesso {
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: #ffff88;
+      display: none; /* começa escondido */
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Psiconnect</h1>
+    <div class="menu">
+      <button onclick="window.location.href='inicio.html'">Início</button>
+      <button onclick="window.location.href='sobre.html'">Sobre</button>
+      <button onclick="window.location.href='servicos.html'">Serviços</button>
+      <button onclick="window.location.href='suporte.html'">Suporte</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="suporte-container">
+      <h2>Suporte</h2>
+      <p>Precisa de ajuda? Escreva sua dúvida ou problema abaixo e entraremos em contato.</p>
+
+      <textarea id="mensagem" placeholder="Descreva seu problema ou dúvida" required></textarea>
+      <button class="btn" id="btnEnviar">Enviar</button>
+      <div class="mensagem-sucesso" id="msgSucesso">Obrigado pelo seu contato! Nossa equipe entrará em contato em breve.
+    </div>
+  </main>
+
+  <script>
+    const btn = document.getElementById('btnEnviar');
+    const msg = document.getElementById('msgSucesso');
+    const textarea = document.getElementById('mensagem');
+
+    btn.addEventListener('click', () => {
+      if(textarea.value.trim() === '') {
+        alert('Por favor, escreva sua mensagem antes de enviar.');
+        return;
+      }
+
+      // mostrar mensagem de sucesso
+      msg.style.display = 'block';
+
+      // limpar textarea
+      textarea.value = '';
+
+      // opcional: esconder a mensagem depois de 4 segundos
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 4000);
+    });
+  </script>
+
+</body>
+</html>
