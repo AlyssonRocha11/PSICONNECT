@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psiconnect - Chat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #07f0d1, #077f8f);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #fff;
+    }
+
+    .menu {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .menu button {
+      background-color: rgba(255,255,255,0.2);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .menu button:hover {
+      background-color: rgba(255,255,255,0.4);
+      transform: scale(1.05);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .chat-container {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 10px;
+    }
+
+    .message {
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 70%;
+      word-wrap: break-word;
+      transition: all 0.3s ease;
+    }
+
+    .sent {
+      background-color: rgba(255,255,255,0.3);
+      align-self: flex-end;
+    }
+
+    .received {
+      background-color: rgba(255,255,255,0.5);
+      color: #000;
+      align-self: flex-start;
+    }
+
+    .typing {
+      font-style: italic;
+      opacity: 0.7;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: none;
+      font-size: 1em;
+    }
+
+    .input-area button {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background-color: rgba(255,255,255,0.2);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .input-area button:hover {
+      background-color: rgba(255,255,255,0.4);
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Psiconnect</h1>
+  <div class="menu">
+    <button onclick="window.location.href='inicio.html'">Início</button>
+        <button onclick="window.location.href='sobre.html'">Sobre</button>
+        <button onclick="window.location.href='servicos.html'">Serviços</button>
+        <button onclick="window.location.href='suporte.html'">Suporte</button>
+        <button onclick="window.location.href='sessoes.html'">Sessões</button>
+  </div>
+</header>
+
+<main>
+  <div class="chat-container">
+    <div class="messages" id="messages">
+      <div class="received">Olá! Como posso te ajudar hoje?</div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="msgInput" placeholder="Digite sua mensagem...">
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const sendBtn = document.getElementById('sendBtn');
+  const msgInput = document.getElementById('msgInput');
+  const messages = document.getElementById('messages');
+
+  function sendMessage() {
+    const text = msgInput.value.trim();
+    if(text === '') return;
+
+    // Mensagem enviada
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', 'sent');
+    msgDiv.textContent = text;
+    messages.appendChild(msgDiv);
+
+    msgInput.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    // Mostrar "digitando..."
+    const typingDiv = document.createElement('div');
+    typingDiv.classList.add('message', 'received', 'typing');
+    typingDiv.textContent = "Digitando...";
+    messages.appendChild(typingDiv);
+    messages.scrollTop = messages.scrollHeight;
+
+    // Substituir "digitando..." pela resposta após 1,5s
+    setTimeout(() => {
+      typingDiv.textContent = "Psicologo Recebeu sua mensagem!";
+      typingDiv.classList.remove('typing');
+      messages.scrollTop = messages.scrollHeight;
+    }, 1500);
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  msgInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') sendMessage();
+  });
+</script>
+
+</body>
+</html>

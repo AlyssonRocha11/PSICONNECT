@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psiconnect - Consultas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #07f0d1, #077f8f);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      color: #fff;
+    }
+
+    .menu {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .menu button {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .menu button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    main {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    /* Filtros */
+    .filtros {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filtros button {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filtros button:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* Cards de consultas */
+    .consultas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.4em;
+    }
+
+    .card p {
+      margin: 3px 0;
+      font-size: 1em;
+    }
+
+    /* Status colorido */
+    .status {
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      font-size: 0.9em;
+    }
+
+    .pendente { background-color: #f5c518; color: #000; }
+    .confirmada { background-color: #4caf50; color: #fff; }
+    .cancelada { background-color: #f44336; color: #fff; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Psiconnect</h1>
+  <div class="menu">
+    <button onclick="window.location.href='painel_psicologo.html'">Dashboard</button>
+    <button onclick="window.location.href='consultas.html'">Consultas</button>
+    <button onclick="window.location.href='perfil.html'">Perfil</button>
+    <button onclick="window.location.href='../index.html'">Sair</button>
+  </div>
+</header>
+
+<main>
+  <!-- Filtros -->
+  <div class="filtros">
+    <button onclick="filtrarConsultas('hoje')">Hoje</button>
+    <button onclick="filtrarConsultas('7dias')">Próximos 7 dias</button>
+    <button onclick="filtrarConsultas('todas')">Todas</button>
+  </div>
+
+  <!-- Lista de consultas -->
+  <div class="consultas">
+    <div class="card" data-date="2025-09-14">
+      <h3>João Silva</h3>
+      <p>Data: 14/09/2025</p>
+      <p>Horário: 10:00</p>
+      <p>Status: <span class="status pendente">Pendente</span></p>
+      <p>Tipo: Online</p>
+      <button class="btn" onclick="window.location.href='conversa.html'">Iniciar Consulta</button>
+    </div>
+
+    <div class="card" data-date="2025-09-14">
+      <h3>Maria Lima</h3>
+      <p>Data: 14/09/2025</p>
+      <p>Horário: 11:30</p>
+      <p>Status: <span class="status confirmada">Confirmada</span></p>
+      <p>Tipo: Presencial</p>
+      <button class="btn" onclick="window.location.href='conversa.html'">Iniciar Consulta</button>
+    </div>
+
+    <div class="card" data-date="2025-09-16">
+      <h3>Pedro Costa</h3>
+      <p>Data: 16/09/2025</p>
+      <p>Horário: 13:00</p>
+      <p>Status: <span class="status confirmada">Confirmada</span></p>
+      <p>Tipo: Online</p>
+      <button class="btn" onclick="window.location.href='conversa.html'">Iniciar Consulta</button>
+    </div>
+
+    <div class="card" data-date="2025-09-22">
+      <h3>Ana Souza</h3>
+      <p>Data: 22/09/2025</p>
+      <p>Horário: 09:00</p>
+      <p>Status: <span class="status pendente">Pendente</span></p>
+      <p>Tipo: Presencial</p>
+      <button class="btn" onclick="window.location.href='conversa.html'">Iniciar Consulta</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  function filtrarConsultas(filtro) {
+    const cards = document.querySelectorAll('.consultas .card');
+    const hoje = new Date('2025-09-14'); // simulação do dia atual
+    cards.forEach(card => {
+      const dataCard = new Date(card.dataset.date);
+      let mostrar = false;
+      if (filtro === 'todas') {
+        mostrar = true;
+      } else if (filtro === 'hoje') {
+        mostrar = dataCard.toDateString() === hoje.toDateString();
+      } else if (filtro === '7dias') {
+        const diff = (dataCard - hoje)/(1000*60*60*24);
+        mostrar = diff >= 0 && diff <= 7;
+      }
+      card.style.display = mostrar ? 'flex' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psiconnect - Sessões</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #07f0d1, #077f8f);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.8em;
+        color: #fff;
+    }
+
+    .menu {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+
+    .menu button {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .menu button:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+
+    main {
+        flex: 1;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .sessoes-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .sessoes-secao {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+        background: rgba(255,255,255,0.1);
+        border-radius: 20px;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+        background: rgba(255,255,255,0.15);
+    }
+
+    .foto-psicologo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #fff;
+    }
+
+    .card-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .card-info h3 { margin:0; font-size:1.3em; }
+    .card-info p { margin: 0; font-size: 0.95em; }
+
+    .status {
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 0.85em;
+        display: inline-block;
+    }
+
+    .pendente { background-color: #f5c518; color: #000; }
+    .confirmada { background-color: #4caf50; color: #fff; }
+    .cancelada { background-color: #f44336; color: #fff; }
+    .concluida { background-color: rgba(255,255,255,0.3); color: #000; }
+
+    .btn {
+        padding: 10px 25px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn:hover:not(:disabled) {
+        transform: scale(1.05);
+    }
+
+    .btn-ativo {
+        background-color: #07f0d1;
+        color: #000;
+    }
+
+    .btn-ativo:hover {
+        background-color: #05cfc1;
+    }
+
+    .btn:disabled {
+        background-color: rgba(255, 255, 255, 0.1);
+        cursor: not-allowed;
+        transform: none;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Psiconnect</h1>
+    <div class="menu">
+       <button onclick="window.location.href='inicio.html'">Início</button>
+        <button onclick="window.location.href='sobre.html'">Sobre</button>
+        <button onclick="window.location.href='servicos.html'">Serviços</button>
+        <button onclick="window.location.href='suporte.html'">Suporte</button>
+        <button onclick="window.location.href='sessoes.html'">Sessões</button>
+    </div>
+</header>
+
+<main>
+    <h2>Minhas Sessões</h2>
+    <div class="sessoes-container">
+
+        <div class="sessoes-secao">
+            <h3>Próximas Sessões</h3>
+            <div class="card">
+                <img class="foto-psicologo" src="https://randomuser.me/api/portraits/men/46.jpg" alt="João Silva">
+                <div class="card-info">
+                    <h3>João Silva</h3>
+                    <p>Data: 14/09/2025</p>
+                    <p>Horário: 10:00</p>
+                    <p>Status: <span class="status confirmada">Confirmada</span></p>
+                    <p>Tipo: Online</p>
+                </div>
+                <button class="btn btn-ativo" onclick="window.location.href='chat.html'">Iniciar Sessão</button>
+            </div>
+
+            <div class="card">
+                <img class="foto-psicologo" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Lima">
+                <div class="card-info">
+                    <h3>Maria Lima</h3>
+                    <p>Data: 16/09/2025</p>
+                    <p>Horário: 11:30</p>
+                    <p>Status: <span class="status pendente">Pendente</span></p>
+                    <p>Tipo: Presencial</p>
+                </div>
+                <button class="btn" disabled>Iniciar Sessão</button>
+            </div>
+        </div>
+
+        <div class="sessoes-secao">
+            <h3>Sessões Passadas</h3>
+            <div class="card">
+                <img class="foto-psicologo" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Pedro Costa">
+                <div class="card-info">
+                    <h3>Pedro Costa</h3>
+                    <p>Data: 10/09/2025</p>
+                    <p>Horário: 09:00</p>
+                    <p>Status: <span class="status concluida">Concluída</span></p>
+                    <p>Tipo: Online</p>
+                </div>
+                <button class="btn" disabled>Iniciar Sessão</button>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+</body>
+</html>
