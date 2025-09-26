@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psiconnect - Histórico de Consultas</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #07f0d1, #077f8f);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #ffffff;
+}
+.menu {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: center;
+}
+.menu button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    color: #f7f6f3;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.menu button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+h2 {
+    margin-top: 20px;
+}
+/* Cards de Histórico */
+.historico-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    width: 90%;
+    max-width: 800px;
+}
+.card-consulta {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-consulta:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+.card-consulta p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+.card-consulta p strong {
+    width: 120px;
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Histórico de Consultas</h1>
+    <div class="menu">
+           <button onclick="window.location.href='dashboard.html'">Inicio</button>
+        <button onclick="window.location.href='cadastrar.html'">Cadastrar Alunos</button>
+        <button onclick="window.location.href='historico.html'">Histórico de Consultas</button>
+        <button onclick="window.location.href='index.html'">Sair</button>
+    </div>
+</header>
+
+<main>
+    <h2>Todas as Consultas</h2>
+    <div class="historico-container">
+        <div class="card-consulta">
+            <p><strong>Psicólogo:</strong> João Silva</p>
+            <p><strong>Especialização:</strong> Clínica Geral</p>
+            <p><strong>Paciente:</strong> Lucas Pereira</p>
+            <p><strong>Data:</strong> 26/09/2025</p>
+            <p><strong>Horário:</strong> 14:00</p>
+        </div>
+        <div class="card-consulta">
+            <p><strong>Psicólogo:</strong> Maria Lima</p>
+            <p><strong>Especialização:</strong> Psicoterapia</p>
+            <p><strong>Paciente:</strong> Ana Souza</p>
+            <p><strong>Data:</strong> 27/09/2025</p>
+            <p><strong>Horário:</strong> 10:30</p>
+        </div>
+        <div class="card-consulta">
+            <p><strong>Psicólogo:</strong> Pedro Costa</p>
+            <p><strong>Especialização:</strong> Clínica Geral</p>
+            <p><strong>Paciente:</strong> Marina Lima</p>
+            <p><strong>Data:</strong> 28/09/2025</p>
+            <p><strong>Horário:</strong> 16:00</p>
+        </div>
+       
+</main>
+
+</body>
+</html>

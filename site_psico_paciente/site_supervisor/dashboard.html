@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psiconnect - Supervisor</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #07f0d1, #077f8f);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #ffffff;
+}
+.menu {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: center;
+}
+.menu button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    color: #f7f6f3;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.menu button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+h2 {
+    margin-top: 20px;
+}
+.destaques-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+.card-psicologo {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    width: 240px;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+.card-psicologo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+.card-psicologo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-psicologo h3 {
+    margin: 5px 0 10px 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+.card-psicologo p {
+    margin: 4px 0;
+    font-size: 0.95em;
+}
+.card-psicologo .btn-card {
+    margin-top: 10px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-editar {
+    background-color: #7c7c7c;
+    color: #ffffff;
+    margin-right: 5px;
+}
+.btn-editar:hover {
+    background-color: #ffea00;
+}
+.btn-excluir {
+    background-color: #ff4d4d;
+}
+.btn-excluir:hover {
+    background-color: #ff1a1a;
+}
+/* Modal Moderno */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right:0; bottom:0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.modal.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: all;
+}
+.modal-content {
+    background: linear-gradient(145deg, #222, #111);
+    padding: 25px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: left;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    color: #ffffff;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+.modal.show .modal-content {
+    transform: scale(1);
+}
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 4px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+}
+.modal-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.modal-content .btn-salvar {
+    background-color: #00ff80;
+    color: #000;
+    margin-right: 10px;
+}
+.modal-content .btn-salvar:hover {
+    background-color: #00ffa0;
+}
+.modal-content .btn-cancelar {
+    background-color: #ff4d4d;
+}
+.modal-content .btn-cancelar:hover {
+    background-color: #ff1a1a;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Psiconnect - Supervisor</h1>
+    <div class="menu">
+         <button onclick="window.location.href='dashboard.html'">Inicio</button>
+        <button onclick="window.location.href='cadastrar.html'">Cadastrar Alunos</button>
+        <button onclick="window.location.href='historico.html'">Histórico de Consultas</button>
+        <button onclick="window.location.href='index.html'">Sair</button>
+    </div>
+</header>
+
+<main>
+    <h2>Psicólogos Cadastrados</h2>
+    <div class="destaques-container" id="psicologosContainer">
+        <div class="card-psicologo">
+            <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="João Silva">
+            <h3>João Silva</h3>
+            <p><strong>Nome:</strong> João Silva</p>
+            <p><strong>Especialização:</strong> Clínica Geral</p>
+            <p><strong>Matrícula:</strong> 12345</p>
+            <button class="btn-card btn-editar" onclick="abrirModal(this)">Editar</button>
+            <button class="btn-card btn-excluir" onclick="excluirPsicologo(this)">Excluir</button>
+        </div>
+        <div class="card-psicologo">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Lima">
+            <h3>Maria Lima</h3>
+            <p><strong>Nome:</strong> Maria Lima</p>
+            <p><strong>Especialização:</strong> Psicoterapia</p>
+            <p><strong>Matrícula:</strong> 54321</p>
+            <button class="btn-card btn-editar" onclick="abrirModal(this)">Editar</button>
+            <button class="btn-card btn-excluir" onclick="excluirPsicologo(this)">Excluir</button>
+        </div>
+    </div>
+</main>
+
+<!-- Modal Moderno -->
+<div class="modal" id="modalEditar">
+    <div class="modal-content">
+        <h3>Editar Psicólogo</h3>
+        <label>Nome:</label>
+        <input type="text" id="nomeEditar">
+        <label>Especialização:</label>
+        <input type="text" id="especialidadeEditar">
+        <label>Matrícula:</label>
+        <input type="text" id="crpEditar">
+        <div style="text-align:right;">
+            <button class="btn-salvar" onclick="salvarEdicao()">Salvar</button>
+            <button class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+let psicologoAtual = null;
+
+function excluirPsicologo(button) {
+    const card = button.parentElement;
+    card.remove();
+}
+
+function abrirModal(button) {
+    psicologoAtual = button.parentElement;
+    document.getElementById('nomeEditar').value = psicologoAtual.querySelectorAll("p")[0].innerText.replace("Nome: ","");
+    document.getElementById('especialidadeEditar').value = psicologoAtual.querySelectorAll("p")[1].innerText.replace("Especialização: ","");
+    document.getElementById('crpEditar').value = psicologoAtual.querySelectorAll("p")[2].innerText.replace("Matrícula: ","");
+    document.getElementById('modalEditar').classList.add("show");
+}
+
+function fecharModal() {
+    document.getElementById('modalEditar').classList.remove("show");
+}
+
+function salvarEdicao() {
+    if(psicologoAtual) {
+        psicologoAtual.querySelectorAll("p")[0].innerHTML = "<strong>Nome:</strong> " + document.getElementById('nomeEditar').value;
+        psicologoAtual.querySelectorAll("p")[1].innerHTML = "<strong>Especialização:</strong> " + document.getElementById('especialidadeEditar').value;
+        psicologoAtual.querySelectorAll("p")[2].innerHTML = "<strong>Matrícula:</strong> " + document.getElementById('crpEditar').value;
+    }
+    fecharModal();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psiconnect - Cadastrar Psicólogo</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #07f0d1, #077f8f);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #ffffff;
+}
+.menu {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: center;
+}
+.menu button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    color: #f7f6f3;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.menu button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+form {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+form label {
+    font-weight: bold;
+    text-align: left;
+}
+form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    width: 100%;
+}
+form button {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #00ff80;
+    color: #000;
+    transition: 0.2s;
+}
+form button:hover {
+    background-color: #00ffa0;
+}
+#previewFoto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    margin-top: 10px;
+    display: none;
+    align-self: center;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Cadastrar Psicólogo</h1>
+    <div class="menu">
+         <button onclick="window.location.href='dashboard.html'">Inicio</button>
+        <button onclick="window.location.href='cadastrar.html'">Cadastrar Alunos</button>
+        <button onclick="window.location.href='historico.html'">Histórico de Consultas</button>
+        <button onclick="window.location.href='index.html'">Sair</button>
+    </div>
+</header>
+
+<main>
+    <form id="formPsicologo">
+        <label for="foto">Foto:</label>
+        <input type="file" id="foto" accept="image/*">
+        <img id="previewFoto" alt="Pré-visualização da foto">
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" placeholder="Digite o nome do psicólogo" required>
+
+        <label for="especializacao">Especialização:</label>
+        <input type="text" id="especializacao" placeholder="Ex: Psicoterapia" required>
+
+        <label for="matricula">Matrícula (CRP):</label>
+        <input type="text" id="matricula" placeholder="Digite o CRP" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Digite o email" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="Digite a senha" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</main>
+
+<script>
+const fotoInput = document.getElementById('foto');
+const preview = document.getElementById('previewFoto');
+
+fotoInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = '';
+        preview.style.display = 'none';
+    }
+});
+
+document.getElementById('formPsicologo').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+    const especializacao = document.getElementById('especializacao').value;
+    const matricula = document.getElementById('matricula').value;
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    const foto = document.getElementById('foto').files[0];
+
+    // Aqui você enviaria para o banco ou API
+    alert(`Psicólogo cadastrado!\nNome: ${nome}\nEspecialização: ${especializacao}\nMatrícula: ${matricula}\nEmail: ${email}\nFoto: ${foto ? foto.name : "Nenhuma"}`);
+
+    this.reset();
+    preview.src = '';
+    preview.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
